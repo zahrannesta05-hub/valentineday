@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine Untuk Nisa</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #ff4d6d, #ffb6c1);
+      overflow: hidden;
+      text-align: center;
+      color: white;
+    }
+
+    .container {
+      margin-top: 120px;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 48px;
+    }
+
+    p {
+      font-size: 20px;
+      width: 80%;
+      margin: auto;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      margin: 10px;
+      transition: all 0.3s ease;
+    }
+
+    #yesBtn {
+      background-color: #ff1e56;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: white;
+      color: #ff1e56;
+    }
+
+    .page2 {
+      display: none;
+      margin-top: 50px;
+      padding: 20px;
+    }
+
+    img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.5);
+      max-width: 90%;
+    }
+
+    /* HATI JATUH */
+    .heart {
+      position: fixed;
+      top: -10px;
+      font-size: 20px;
+      animation: fall linear infinite;
+      color: red;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+
+    /* RESPONSIVE TANPA UBAH DESAIN */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 32px;
+      }
+
+      p {
+        font-size: 16px;
+        width: 90%;
+      }
+
+      button {
+        font-size: 16px;
+        padding: 12px 25px;
+      }
+
+      .container {
+        margin-top: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<audio id="music" loop>
+  <!-- GANTI FILE INI DENGAN LAGU KAMU -->
+  <source src="musik.mp3" type="audio/mpeg">
+</audio>
+
+<!-- HALAMAN 1 -->
+<div class="container" id="page1">
+  <h1>Happy Valentine Sayang ❤️</h1>
+  <p>Penasaran isinya ngga?</p><br>
+  <button id="yesBtn" onclick="goToPage2()">IYA</button>
+  <button id="noBtn" onclick="makeYesBigger()">ENGGA</button>
+</div>
+
+<!-- HALAMAN 2 -->
+<div class="page2" id="page2">
+  <img src="foto.jpg" alt="Foto Kita">
+  <h1>Untuk Nisa 💖</h1>
+  <p>
+    Aku minta maaf karena valentine sebelumnya aku ngga kasih kamu apapun, dan aku juga mau berterima kasih sama kamu masih terima aku dengan segala kekurangan ku, aku harap kedepannya kita berdua bisa sama sama terus yaa cantik, aku juga mau minta maaf kalau aku udah bikin banyak salah
+  </p>
+  <br>
+  <p>
+    Kedepannya juga aku pasti usahain untuk bikin kamu selalu senyum dan bahagia. I love you sayng. Sekali lagi aku minta maaf kalau aku sudah sering bikin kamu sedih, marah, dan kecewa tapi aku pasti aku usahain aku bikin kamu selalu tersenyum dan bahagia terus.
+  </p>
+  <br>
+  <p><b>Happy Valentine Sayang ❤️</b></p>
+</div>
+
+<script>
+  let size = 18;
+
+  function makeYesBigger() {
+    size += 5;
+    document.getElementById("yesBtn").style.fontSize = size + "px";
+  }
+
+  function goToPage2() {
+    document.getElementById("page1").style.display = "none";
+    document.getElementById("page2").style.display = "block";
+
+    const music = document.getElementById("music");
+    music.volume = 0.5;
+    music.play(); // PLAY SETELAH TOMBOL IYA
+  }
+
+  // Animasi hati jatuh
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 5000);
+  }
+
+  setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
